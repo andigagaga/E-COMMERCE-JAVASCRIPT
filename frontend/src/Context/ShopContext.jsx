@@ -3,7 +3,6 @@ import all_product from "../Componets/Assets/all_product.js";
 
 export const ShopContext = createContext(null);
 
-// function untuk mendapatkan semua product
 const getDefaultCart = () => {
   let cart = {};
   for (let index = 0; index < all_product.length + 1; index++) {
@@ -15,17 +14,14 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
-  // untuk add cart/product
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
   };
 
-  // untuk menghapus cart/product
   const removeToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
-  // untuk menghitung total cart/product
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {

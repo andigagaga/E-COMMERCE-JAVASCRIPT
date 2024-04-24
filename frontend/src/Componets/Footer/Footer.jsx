@@ -1,11 +1,10 @@
+import Lottie from "lottie-react";
 import React from "react";
-import "./Footer.css";
-import footer_logo from "../Assets/logo_big.png";
+import logo from "../Assets/LogoShop.json";
 import instagram_icon from "../Assets/instagram_icon.png";
 import pintester_icon from "../Assets/pintester_icon.png";
 import whatsapp_icon from "../Assets/whatsapp_icon.png";
-import logo from "../Assets/LogoShop.json";
-import Lottie from "lottie-react";
+import "./Footer.css";
 
 export default function Footer() {
   return (

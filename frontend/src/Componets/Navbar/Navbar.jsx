@@ -1,11 +1,11 @@
+import Lottie from "lottie-react";
 import React, { useContext, useRef, useState } from "react";
-import "./Navbar.css";
-import logo from "../Assets/LogoShop.json";
-import cart_icon from "../Assets/Cart.json";
+import { IoIosArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
-import { IoIosArrowDropdown } from "react-icons/io";
-import Lottie from "lottie-react";
+import cart_icon from "../Assets/Cart.json";
+import logo from "../Assets/LogoShop.json";
+import "./Navbar.css";
 
 export default function Navbar() {
   const [menu, setMenu] = useState("shop");

@@ -1,15 +1,15 @@
 import React from "react";
-import Navbar from "./Componets/Navbar/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Shop from "./Pages/Shop";
-import ShopCategories from "./Pages/ShopCategories";
-import Product from "./Pages/Product";
-import Cart from "./Pages/Cart";
-import LoginSignUp from "./Pages/LoginSignup";
-import Footer from "./Componets/Footer/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import kid_banner from "./Componets/Assets/banner_kids.png";
 import men_banner from "./Componets/Assets/banner_mens.png";
 import women_banner from "./Componets/Assets/banner_women.png";
-import kid_banner from "./Componets/Assets/banner_kids.png";
+import Footer from "./Componets/Footer/Footer";
+import Navbar from "./Componets/Navbar/Navbar";
+import Cart from "./Pages/Cart";
+import LoginSignUp from "./Pages/LoginSignup";
+import Product from "./Pages/Product";
+import Shop from "./Pages/Shop";
+import ShopCategories from "./Pages/ShopCategories";
 
 export default function App() {
   return (

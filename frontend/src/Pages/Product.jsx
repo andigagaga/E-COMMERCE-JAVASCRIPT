@@ -9,11 +9,8 @@ import RelatedProducts from "../Componets/RelatedProducts/RelatedProducts";
 export default function Product() {
   const { all_product } = useContext(ShopContext);
   const { productId } = useParams();
-  // console.log("data productnya", all_product);
-  // console.log("id productnya", productId);
 
   const product = all_product.find((e) => e.id === Number(productId));
-  // console.log(product);
 
   return (
     <div>
