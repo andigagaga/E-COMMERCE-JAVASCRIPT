@@ -6,10 +6,10 @@
   width: 65%;
   height: 40vh;
   margin: auto;
-  padding: 0px 140px;
+  padding: 10px 140px;
   background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
   gap: 30px;
-  margin-top: 200px;
+  /* margin-top: 200px; */
 }
 
 .newsletter h1 {

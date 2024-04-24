@@ -1,10 +1,11 @@
 import React, { useContext, useRef, useState } from "react";
 import "./Navbar.css";
-import logo from "../Assets/logo.png";
-import cart_icon from "../Assets/cart_icon.png";
+import logo from "../Assets/LogoShop.json";
+import cart_icon from "../Assets/Cart.json";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 import { IoIosArrowDropdown } from "react-icons/io";
+import Lottie from "lottie-react";
 
 export default function Navbar() {
   const [menu, setMenu] = useState("shop");
@@ -19,8 +20,8 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="nav-logo">
-        <img src={logo} alt="logo" />
-        <p>SHOPPER</p>
+        <Lottie className="nav-logo-icon" animationData={logo} />
+        <p>Guswandi</p>
       </div>
       <IoIosArrowDropdown
         className="nav-dropdown-icon"
@@ -57,7 +58,7 @@ export default function Navbar() {
           <button>Login</button>
         </Link>
         <Link to={"/cart"}>
-          <img src={cart_icon}></img>
+          <Lottie className="nav-cart-icon" animationData={cart_icon} />
         </Link>
         <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>

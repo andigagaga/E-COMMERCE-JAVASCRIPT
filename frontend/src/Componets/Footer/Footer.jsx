@@ -4,12 +4,15 @@ import footer_logo from "../Assets/logo_big.png";
 import instagram_icon from "../Assets/instagram_icon.png";
 import pintester_icon from "../Assets/pintester_icon.png";
 import whatsapp_icon from "../Assets/whatsapp_icon.png";
+import logo from "../Assets/LogoShop.json";
+import Lottie from "lottie-react";
 
 export default function Footer() {
   return (
     <div className="footer">
       <div className="footer-logo">
-        <img src={footer_logo}></img>
+        <Lottie className="footer-logo-icon" animationData={logo} />
+        {/* <img src={footer_logo}></img> */}
         <p>SHOOPER</p>
       </div>
       <ul className="footer-links">

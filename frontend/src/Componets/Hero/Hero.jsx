@@ -1,8 +1,9 @@
 import React from "react";
 import "./Hero.css";
-import hand_icon from "../Assets/hand_icon.png";
-import arrow_icon from "../Assets/arrow.png";
-import hero_image from "../Assets/hero_image.png";
+import hand_icon from "../Assets/Hand.json";
+import arrow_icon from "../Assets/Arrow.json";
+import hero_image from "../Assets/Hero.json";
+import Lottie from "lottie-react";
 
 export default function Hero() {
   return (
@@ -12,18 +13,18 @@ export default function Hero() {
         <div>
           <div className="hero-hand-icon">
             <p>new</p>
-            <img src={hand_icon}></img>
+            <Lottie className="hero-icon" animationData={hand_icon} />
           </div>
           <p>collections</p>
           <p>for everyone</p>
         </div>
         <div className="hero-latest-btn">
           <div>Latest Collections</div>
-          <img src={arrow_icon}></img>
+          <Lottie className="arrow-icon" animationData={arrow_icon} />
         </div>
       </div>
       <div className="hero-right">
-        <img src={hero_image}></img>
+        <Lottie animationData={hero_image} />
       </div>
     </div>
   );
