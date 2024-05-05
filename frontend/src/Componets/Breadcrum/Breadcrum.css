@@ -23,7 +23,8 @@
 }
 @media (max-width: 800px) {
   .breadcrum {
-    margin: 30px 10px;
+    margin: 20px 10px;
+    margin-top: 60px;
     font-size: 12px;
   }
 }

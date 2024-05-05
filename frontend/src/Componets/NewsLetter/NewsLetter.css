@@ -4,22 +4,25 @@
   align-items: center;
   flex-direction: column;
   width: 65%;
-  height: 40vh;
+  height: 60vh;
   margin: auto;
-  padding: 10px 140px;
-  background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
+  padding: 40px 80px;
+  background: #ff5722;
   gap: 30px;
+  box-shadow: 0 2px 8px #000;
 }
 
 .newsletter h1 {
-  color: #171717;
+  color: white;
   font-size: 40px;
   font-weight: 700;
+  text-shadow: 0 5px 8px #000;
 }
 
 .newsletter p {
-  color: #454545;
+  color: white;
   font-size: 20px;
+  text-shadow: 0 3px 5px #000;
 }
 
 .newsletter div {
@@ -41,6 +44,7 @@
   color: #616161;
   font-family: Poppins;
   font-size: 16px;
+  text-shadow: 0 1px 3px #000;
 }
 
 .newsletter div button {
@@ -51,6 +55,7 @@
   color: white;
   font-size: 16px;
   cursor: pointer;
+  text-shadow: 0 1px 3px white;
 }
 
 @media (max-width: 1280px) {
@@ -129,7 +134,7 @@
 @media (max-width: 500px) {
   .newsletter {
     height: 25vh;
-    width: 100%;
+    width: 95%;
     padding: 0;
     gap: 15px;
   }

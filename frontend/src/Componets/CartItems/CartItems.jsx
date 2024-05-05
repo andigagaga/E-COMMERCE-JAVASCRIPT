@@ -25,11 +25,27 @@ export default function CartItems() {
               <div className="cart-items-format cart-items-format-main">
                 <img src={e.image} alt="" className="cart-icon-product-icon" />
                 <p>{e.name}</p>
-                <p>${e.new_price}</p>
+                <p
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    width: "150px",
+                  }}
+                >
+                  <span
+                    style={{ textDecoration: "line-through", color: "#9CAFAA" }}
+                  >
+                    Rp{e.old_price.toLocaleString("id-ID")}
+                  </span>
+                  Rp{e.new_price.toLocaleString("id-ID")}
+                </p>
                 <button className="cart-items-quantity">
                   {cartItems[e.id]}
                 </button>
-                <p>${e.new_price * cartItems[e.id]}</p>
+                <p style={{ fontWeight: "bold", color: "#ff5722" }}>
+                  Rp{(e.new_price * cartItems[e.id]).toLocaleString("id-ID")}
+                </p>
                 <img
                   className="cart-icon-remove-icon"
                   src={remove_icon}
@@ -51,7 +67,7 @@ export default function CartItems() {
           <div>
             <div className="cart-items-total-items">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>Rp.{getTotalCartAmount().toLocaleString("id-ID")}</p>
             </div>
             <hr />
             <div className="cart-items-total-items">
@@ -61,7 +77,7 @@ export default function CartItems() {
             <hr />
             <div className="cart-items-total-items">
               <h3>Total</h3>
-              <h3>${getTotalCartAmount()}</h3>
+              <h3>Rp.{getTotalCartAmount().toLocaleString("id-ID")}</h3>
             </div>
           </div>
           <button>PROCED TO CHECKOUT</button>

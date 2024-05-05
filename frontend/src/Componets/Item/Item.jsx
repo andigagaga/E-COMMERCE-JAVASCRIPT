@@ -10,8 +10,12 @@ export default function Item(props) {
       </Link>
       <p>{props.name}</p>
       <div className="item-prices">
-        <div className="item-price-new">{props.new_price}</div>
-        <div className="item-price-old">{props.old_price}</div>
+        <div className="item-price-new">
+          Rp {props.new_price.toLocaleString("id-ID")}
+        </div>
+        <div className="item-price-old">
+          Rp {props.old_price.toLocaleString("id-ID")}
+        </div>
       </div>
     </div>
   );

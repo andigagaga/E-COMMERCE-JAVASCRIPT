@@ -11,7 +11,6 @@ export default function Footer() {
     <div className="footer">
       <div className="footer-logo">
         <Lottie className="footer-logo-icon" animationData={logo} />
-        {/* <img src={footer_logo}></img> */}
         <p>SHOOPER</p>
       </div>
       <ul className="footer-links">

@@ -8,6 +8,7 @@
   color: #171717;
   font-size: 50px;
   font-weight: 600;
+  text-shadow: 0 2px 5px #000;
 }
 
 .popular hr {
@@ -15,6 +16,7 @@
   height: 6px;
   border-radius: 10px;
   background: #252525;
+  box-shadow: 0 1px 5px #000;
 }
 
 .pupular-item {

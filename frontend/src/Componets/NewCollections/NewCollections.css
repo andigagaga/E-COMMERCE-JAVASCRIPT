@@ -5,10 +5,11 @@
   gap: 10px;
 }
 
-.new-collections h1 {
+.new-collections h2 {
   color: #171717;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 600;
+  text-shadow: 0 5px 8px #000;
 }
 
 .new-collections hr {
@@ -16,6 +17,7 @@
   height: 6px;
   border-radius: 10px;
   background: #252525;
+  box-shadow: 0 5px 8px #000;
 }
 
 .collections {

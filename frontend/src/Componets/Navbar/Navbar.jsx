@@ -29,34 +29,87 @@ export default function Navbar() {
       />
       <ul ref={menuRef} className="nav-menu">
         <li onClick={() => setMenu("shop")}>
-          <Link style={{ textDecoration: "none" }} to={"/"}>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "white",
+              textShadow: "0 2px 5px #000",
+            }}
+            to={"/"}
+          >
             Shop
           </Link>
           {menu === "shop" ? <hr /> : <></>}
         </li>
         <li onClick={() => setMenu("mens")}>
-          <Link style={{ textDecoration: "none" }} to={"/mens"}>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "white",
+              textShadow: "0 2px 5px #000",
+            }}
+            to={"/mens"}
+          >
             Mens
           </Link>
           {menu === "mens" ? <hr /> : <></>}
         </li>
         <li onClick={() => setMenu("womens")}>
-          <Link style={{ textDecoration: "none" }} to={"/womens"}>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "white",
+              textShadow: "0 2px 5px #000",
+            }}
+            to={"/womens"}
+          >
             Womens
           </Link>
           {menu === "womens" ? <hr /> : <></>}
         </li>
         <li onClick={() => setMenu("kids")}>
-          <Link style={{ textDecoration: "none" }} to={"/kids"}>
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "white",
+              textShadow: "0 2px 5px #000",
+            }}
+            to={"/kids"}
+          >
             Kids
           </Link>
           {menu === "kids" ? <hr /> : <></>}
         </li>
       </ul>
       <div className="nav-login-cart">
-        <Link to={"/login"}>
-          <button>Login</button>
-        </Link>
+        {localStorage.getItem("auth-token") ? (
+          <button
+            style={{
+              background: "#FDA403",
+              color: "red",
+              border: "none",
+              textShadow: "0 4px 8px white",
+            }}
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              window.location.replace("/");
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to={"/login"}>
+            <button
+              style={{
+                background: "green",
+                color: "white",
+                textShadow: "0 2px 5px #000",
+              }}
+            >
+              Login
+            </button>
+          </Link>
+        )}
         <Link to={"/cart"}>
           <Lottie className="nav-cart-icon" animationData={cart_icon} />
         </Link>
