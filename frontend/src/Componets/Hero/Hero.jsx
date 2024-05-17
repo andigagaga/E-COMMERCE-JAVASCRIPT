@@ -5,7 +5,7 @@ import arrow_icon from "../Assets/Arrow.json";
 import hero_image from "../Assets/Hero.json";
 import Lottie from "lottie-react";
 
-export default function Hero() {
+export default function Hero({ scrollToNewsCollections }) {
   return (
     <div className="hero">
       <div className="hero-left">
@@ -18,8 +18,8 @@ export default function Hero() {
           <p>collections</p>
           <p>for everyone</p>
         </div>
-        <div className="hero-latest-btn">
-          <div>Latest Collections</div>
+        <div className="hero-latest-btn" onClick={scrollToNewsCollections}>
+          <div>New Collections</div>
           <Lottie className="arrow-icon" animationData={arrow_icon} />
         </div>
       </div>

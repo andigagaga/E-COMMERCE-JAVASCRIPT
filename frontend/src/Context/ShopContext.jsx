@@ -35,7 +35,6 @@ const ShopContextProvider = (props) => {
         .then((data) => setCartItems(data));
     }
   }, []);
-  console.log("all_product", all_product);
   console.log("cartItems", cartItems);
 
   const addToCart = (itemId) => {
@@ -95,6 +94,23 @@ const ShopContextProvider = (props) => {
     return totalItems;
   };
 
+  const addCheckout = async (totalAmount) => {
+    if (localStorage.getItem("auth-token")) {
+      const response = await fetch("http://localhost:4000/checkout", {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          "auth-token": `${localStorage.getItem("auth-token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ gross_amount: Number(totalAmount) }),
+      });
+      const data = await response.json();
+      return data;
+    }
+    return null;
+  };
+
   const contextValue = {
     all_product,
     cartItems,
@@ -102,6 +118,7 @@ const ShopContextProvider = (props) => {
     removeToCart,
     getTotalCartAmount,
     getTotalCartItems,
+    addCheckout,
   };
   return (
     <ShopContext.Provider value={contextValue}>

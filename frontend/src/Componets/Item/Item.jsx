@@ -8,7 +8,15 @@ export default function Item(props) {
       <Link to={`/product/${props.id}`}>
         <img onClick={window.scrollTo(0, 0)} src={props.image}></img>
       </Link>
-      <p>{props.name}</p>
+      <p
+        style={{
+          cursor: "pointer",
+          textDecoration: "underline",
+          fontWeight: "bold",
+        }}
+      >
+        {props.name}
+      </p>
       <div className="item-prices">
         <div className="item-price-new">
           Rp {props.new_price.toLocaleString("id-ID")}

@@ -1,0 +1,15 @@
+.place-order {
+  margin: 100px 170px;
+}
+.place-order-container {
+  width: 100%;
+}
+@media (max-width: 500px) {
+  .place-order {
+    margin: 100px 80px;
+  }
+  .place-order-container button {
+    width: 50%;
+    align-items: center;
+  }
+}

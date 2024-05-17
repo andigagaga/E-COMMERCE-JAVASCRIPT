@@ -1,0 +1,319 @@
+{all_product.map((e) => {
+        if (cartItems[e.id] > 0) {
+          return (
+            <div>
+              <div className="cart-items-format cart-items-format-main">
+                <img src={e.image} alt="" className="cart-icon-product-icon" />
+                <p>{e.name}</p>
+                <p
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    width: "150px",
+                  }}
+                >
+                  <span
+                    style={{ textDecoration: "line-through", color: "#9CAFAA" }}
+                  >
+                    Rp{e.old_price.toLocaleString("id-ID")}
+                  </span>
+                  Rp{e.new_price.toLocaleString("id-ID")}
+                </p>
+                <button className="cart-items-quantity">
+                  {cartItems[e.id]}
+                </button>
+                <p style={{ fontWeight: "bold", color: "#ff5722" }}>
+                  Rp{(e.new_price * cartItems[e.id]).toLocaleString("id-ID")}
+                </p>
+                <img
+                  className="cart-icon-remove-icon"
+                  src={remove_icon}
+                  onClick={() => {
+                    removeToCart(e.id);
+                  }}
+                  alt=""
+                />
+              </div>
+              <hr />
+            </div>
+          );
+        }
+        return null;
+      })}
+      <div className="cart-items-down">
+        <div className="cart-items-total">
+          <h1>Cart Totals</h1>
+          <div>
+            <div className="cart-items-total-items">
+              <p>Subtotal</p>
+              <p>Rp.{getTotalCartAmount().toLocaleString("id-ID")}</p>
+            </div>
+            <hr />
+            <div className="cart-items-total-items">
+              <p>Shiping Fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cart-items-total-items">
+              <h3>Total</h3>
+              <h3>Rp.{getTotalCartAmount().toLocaleString("id-ID")}</h3>
+            </div>
+          </div>
+          <button>PROCED TO CHECKOUT</button>
+        </div>
+        <div className="cart-items-promocode">
+          <p>If you have a promo code, Enter it here</p>
+          <div className="cart-items-promobox">
+            <input type="text" placeholder="promo code"></input>
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      cart items
+      import React, { useContext } from "react";
+import { ShopContext } from "../../Context/ShopContext";
+import remove_icon from "../Assets/cart_cross_icon.png";
+import "./CartItems.css";
+
+export default function CartItems() {
+  const { all_product, cartItems, removeToCart, getTotalCartAmount } =
+    useContext(ShopContext);
+  console.log(cartItems);
+
+  return (
+    <div className="cart-items">
+      <div className="cart-items-format-main">
+        <p>Products</p>
+        <p>Title</p>
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Total</p>
+        <p>Remove</p>
+      </div>
+      <hr />
+      {Object.keys(cartItems).map((item) => {
+        const product = all_product.find(
+          (product) => product.id === cartItems[item].productId
+        );
+        if (!product) return null;
+        console.log(product);
+
+        // untuk mendapatkan data cartItems
+        const itemQuantity = cartItems[item].quantity;
+
+        // Mencari objek ukuran yang sesuai dengan ukuran yang dipilih dari array sizes
+        const selectedSize = product.sizes.find(
+          (size) => size.size === cartItems[item].selectedSize
+        );
+        if (!selectedSize) return null;
+
+        // menghitung total harga per item
+        const itemTotalPrice = itemQuantity * selectedSize.price;
+
+        return (
+          <div>
+            <div className="cart-items-format cart-items-format-main">
+              <img
+                src={product.image}
+                alt=""
+                className="cart-icon-product-icon"
+              />
+              <p>{product.name}</p>
+              <p
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  width: "150px",
+                }}
+              >
+                <span
+                  style={{ textDecoration: "line-through", color: "#9CAFAA" }}
+                >
+                  Rp{product.old_price.toLocaleString("id-ID")}
+                </span>
+                Rp{product.new_price.toLocaleString("id-ID")}
+              </p>
+              <button className="cart-items-quantity">{itemQuantity}</button>
+              <p style={{ fontWeight: "bold", color: "#ff5722" }}>
+                Rp
+                {itemTotalPrice.toLocaleString("id-ID")}
+              </p>
+              <img
+                className="cart-icon-remove-icon"
+                src={remove_icon}
+                onClick={() => {
+                  removeToCart(product.id);
+                }}
+                alt=""
+              />
+            </div>
+            <hr />
+          </div>
+        );
+      })}
+      <div className="cart-items-down">
+        <div className="cart-items-total">
+          <h1>Cart Totals</h1>
+          <div>
+            <div className="cart-items-total-items">
+              <p>Subtotal</p>
+              <p>Rp.{getTotalCartAmount().toLocaleString("id-ID")}</p>
+            </div>
+            <hr />
+            <div className="cart-items-total-items">
+              <p>Shiping Fee</p>
+              <p>Free</p>
+            </div>
+            <hr />
+            <div className="cart-items-total-items">
+              <h3>Total</h3>
+              <h3>Rp.{getTotalCartAmount().toLocaleString("id-ID")}</h3>
+            </div>
+          </div>
+          <button>PROCED TO CHECKOUT</button>
+        </div>
+        <div className="cart-items-promocode">
+          <p>If you have a promo code, Enter it here</p>
+          <div className="cart-items-promobox">
+            <input type="text" placeholder="promo code"></input>
+            <button>Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+ShopContext
+import { createContext, useEffect, useState } from "react";
+
+export const ShopContext = createContext(null);
+
+const getDefaultCart = () => {
+  let cart = {};
+  for (let index = 0; index < 300 + 1; index++) {
+    cart[index] = 0;
+  }
+  return cart;
+};
+
+const ShopContextProvider = (props) => {
+  const [all_product, setAll_Product] = useState([]);
+  const [cartItems, setCartItems] = useState(getDefaultCart());
+  console.log("cart itemnya", cartItems);
+
+  // getallProducts
+  useEffect(() => {
+    fetch("http://localhost:4000/getallproducts")
+      .then((res) => res.json())
+      .then((data) => setAll_Product(data));
+
+    if (localStorage.getItem("auth-token")) {
+      fetch("http://localhost:4000/getcartdata", {
+        method: "POST",
+        headers: {
+          Accept: "application/form-data",
+          "auth-token": `${localStorage.getItem("auth-token")}`,
+          "Content-Type": "application/json",
+        },
+        body: "",
+      })
+        .then((response) => response.json())
+        .then((data) => setCartItems(data));
+    }
+  }, []);
+
+  const addToCart = (productId, selectedSize) => {
+    const data = {
+      productId: productId,
+      selectedSize: selectedSize,
+    };
+    setCartItems((prev) => ({ ...prev, [productId]: prev[productId] + 1 }));
+
+    if (localStorage.getItem("auth-token")) {
+      fetch("http://localhost:4000/addtocart", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "auth-token": `${localStorage.getItem("auth-token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then(() => {
+          console.log("Product added to cart successfully!");
+        })
+        .catch((error) => {
+          console.log("Error adding product to cart:", error);
+        });
+    }
+  };
+
+  const removeToCart = (productId, selectedSize) => {
+    const itemKey = `${productId}-${selectedSize}`;
+
+    if (cartItems[itemKey] > 0) {
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+      if (localStorage.getItem("auth-token")) {
+        fetch("http://localhost:4000/removefromcart", {
+          method: "POST",
+          headers: {
+            Accept: "application/form-data",
+            "auth-token": `${localStorage.getItem("auth-token")}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ itemId: itemId }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.log(error));
+      }
+    }
+  };
+
+  const getTotalCartAmount = () => {
+    let totalAmount = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = all_product.find(
+          (product) => product.id === Number(item)
+        );
+        totalAmount += itemInfo.new_price * cartItems[item];
+      }
+    }
+    return totalAmount;
+  };
+
+  const getTotalCartItems = () => {
+    let totalItems = 0;
+    Object.values(cartItems).forEach((item) => {
+      totalItems += item.quantity;
+    });
+    console.log(totalItems);
+    return totalItems;
+  };
+
+  const contextValue = {
+    all_product,
+    cartItems,
+    addToCart,
+    removeToCart,
+    getTotalCartAmount,
+    getTotalCartItems,
+  };
+  return (
+    <ShopContext.Provider value={contextValue}>
+      {props.children}
+    </ShopContext.Provider>
+  );
+};
+
+export default ShopContextProvider;
